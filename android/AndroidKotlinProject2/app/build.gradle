@@ -1,19 +1,24 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+
     defaultConfig {
         applicationId "charleston.androidkotlinproject"
-        minSdkVersion 21
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+
+        minSdkVersion rootProject.ext.androidMinSdkVersion
+        targetSdkVersion rootProject.ext.androidTargetSdkVersion
+        versionCode rootProject.ext.androidVersionCode
+        versionName rootProject.ext.androidVersionName
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testApplicationId "com.example.test"
+        testHandleProfiling true
+        testFunctionalTest true
     }
     buildTypes {
         release {
@@ -21,13 +26,71 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
+    Map<String, String> dependencies = rootProject.ext.dependencies
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:26.1.0'
+
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    androidTestImplementation('com.android.support.test:runner:1.0.1', {
+        exclude module: 'support-annotations'
+    })
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+
+    })
+    androidTestImplementation('com.android.support.test.espresso:espresso-intents:3.0.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    /* kotlin support */
+    implementation dependencies.androidKotlin
+
+    /* support */
+    implementation dependencies.supportAppCompact
+    implementation dependencies.supportDesign
+    implementation dependencies.support
+    implementation dependencies.supportVectorDrawable
+    implementation dependencies.supportCardView
+
+    /* rx */
+    implementation dependencies.rxJava
+    implementation dependencies.rxKotlin
+    implementation dependencies.rxAndroid
+
+    /* dagger */
+    kaptTest dependencies.daggerCompiler
+    kapt dependencies.daggerCompiler
+    kapt dependencies.daggerAndroidProcessor
+    implementation dependencies.dagger
+    implementation dependencies.daggerAndroid
+    implementation dependencies.daggerAndroidSupport
+
+    /* lifecycle */
+    compile dependencies.lifecycle
+    kapt dependencies.lifecycleCompiler
+
+    /* tests */
+    testImplementation dependencies.dagger
+    testImplementation dependencies.testRobolectric
+    testImplementation dependencies.testRobolectricAnnotations
+    testImplementation dependencies.testRobolectricSupport
+    implementation dependencies.testEspressoCore
+    implementation dependencies.testEspressoIntents
+    implementation dependencies.testRules
+    implementation dependencies.testRunner
+    testImplementation dependencies.testJUnit
+    testImplementation dependencies.testMockitoKoltin
+
+    /* logs */
+    compile dependencies.logTimber
 }
