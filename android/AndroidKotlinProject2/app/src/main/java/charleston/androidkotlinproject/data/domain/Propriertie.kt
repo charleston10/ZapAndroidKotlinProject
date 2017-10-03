@@ -1,4 +1,4 @@
-package charleston.androidkotlinproject.data.entities
+package charleston.androidkotlinproject.data.domain
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
