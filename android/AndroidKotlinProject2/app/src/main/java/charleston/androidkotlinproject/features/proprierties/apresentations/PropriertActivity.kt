@@ -20,7 +20,7 @@ class PropriertActivity : AppCompatActivity(), PropriertieView {
         presenter.findAll()
     }
 
-    override fun showList(list : List<Propriertie>)  {
-        Timber.i("listou")
+    override fun showList(list: List<Propriertie>) {
+        Timber.i("listou", list)
     }
 }
