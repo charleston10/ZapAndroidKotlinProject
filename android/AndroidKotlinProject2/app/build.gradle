@@ -79,6 +79,9 @@ dependencies {
     compile dependencies.lifecycle
     kapt dependencies.lifecycleCompiler
 
+    /* retrofit */
+    implementation dependencies.googleGson
+
     /* tests */
     testImplementation dependencies.dagger
     testImplementation dependencies.testRobolectric
