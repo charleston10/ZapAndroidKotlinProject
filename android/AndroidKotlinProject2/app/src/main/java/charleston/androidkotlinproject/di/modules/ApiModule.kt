@@ -1,5 +1,6 @@
 package charleston.androidkotlinproject.di.modules
 
+import charleston.androidkotlinproject.data.remote.features.propriertie.PropriertieManager
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -42,5 +43,11 @@ class ApiModule {
                 .addConverterFactory(GsonConverterFactory.create(gsonFactory))
                 .client(httpClient)
                 .build()
+    }
+
+    @Provides
+    @Singleton
+    fun providePropriertManager(): PropriertieManager {
+        return PropriertieManager()
     }
 }
