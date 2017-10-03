@@ -19,16 +19,31 @@ android {
         testApplicationId "com.example.test"
         testHandleProfiling true
         testFunctionalTest true
+
+        multiDexEnabled true
     }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
         }
     }
 
     testOptions {
         unitTests.returnDefaultValues = true
+    }
+
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+
+    dexOptions {
+        incremental = true
+        javaMaxHeapSize "4g"
     }
 }
 
@@ -37,20 +52,14 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:26.1.0'
 
     testImplementation 'junit:junit:4.12'
 
-    androidTestImplementation('com.android.support.test:runner:1.0.1', {
-        exclude module: 'support-annotations'
-    })
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
-        exclude group: 'com.android.support', module: 'support-annotations'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
 
-    })
-    androidTestImplementation('com.android.support.test.espresso:espresso-intents:3.0.1', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    implementation 'com.android.support:multidex:1.0.2'
 
     /* kotlin support */
     implementation dependencies.androidKotlin
@@ -61,6 +70,7 @@ dependencies {
     implementation dependencies.support
     implementation dependencies.supportVectorDrawable
     implementation dependencies.supportCardView
+    implementation dependencies.supportMultiDex
 
     /* rx */
     implementation dependencies.rxJava
@@ -76,11 +86,16 @@ dependencies {
     implementation dependencies.daggerAndroidSupport
 
     /* lifecycle */
-    compile dependencies.lifecycle
+    implementation dependencies.lifecycle
     kapt dependencies.lifecycleCompiler
 
     /* retrofit */
     implementation dependencies.googleGson
+    implementation dependencies.squareRetrofit
+    implementation dependencies.squareConverterGson
+    implementation dependencies.squareLogging
+    implementation dependencies.squareOkHttp
+    implementation dependencies.squareRxAdapter
 
     /* tests */
     testImplementation dependencies.dagger

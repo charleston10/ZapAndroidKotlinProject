@@ -7,7 +7,10 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import charleston.androidkotlinproject.App
+import charleston.androidkotlinproject.di.components.DaggerAppComponent
 import charleston.androidkotlinproject.di.modules.AppModule
+import dagger.android.AndroidInjection
+import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.HasSupportFragmentInjector
 
 /**
@@ -48,7 +51,7 @@ object AppInjector {
 
     private fun handleActivity(activity: Activity) {
         if (activity is HasSupportFragmentInjector) {
-            dagger.android.AndroidInjection.inject(activity)
+            AndroidInjection.inject(activity)
         }
         if (activity is FragmentActivity) {
             activity.supportFragmentManager
@@ -57,7 +60,7 @@ object AppInjector {
                                 override fun onFragmentCreated(fm: FragmentManager?, fragment: Fragment?,
                                                                savedInstanceState: Bundle?) {
                                     if (fragment is Injectable) {
-                                        dagger.android.support.AndroidSupportInjection.inject(fragment)
+                                        AndroidSupportInjection.inject(fragment)
                                     }
                                 }
                             }, true

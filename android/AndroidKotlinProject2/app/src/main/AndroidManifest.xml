@@ -9,6 +9,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
+        android:largeHeap="true"
         tools:replace="label"
         android:theme="@style/AppTheme" />
 </manifest>
