@@ -19,8 +19,6 @@ android {
         testApplicationId "com.example.test"
         testHandleProfiling true
         testFunctionalTest true
-
-        multiDexEnabled true
     }
 
     buildTypes {
@@ -40,10 +38,6 @@ android {
     packagingOptions {
         exclude 'META-INF/rxjava.properties'
     }
-
-    dexOptions {
-        javaMaxHeapSize "4g"
-    }
 }
 
 dependencies {
@@ -58,8 +52,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
 
-    implementation 'com.android.support:multidex:1.0.2'
-
     /* kotlin support */
     implementation dependencies.androidKotlin
 
@@ -71,7 +63,6 @@ dependencies {
     implementation dependencies.support
     implementation dependencies.supportVectorDrawable
     implementation dependencies.supportCardView
-    implementation dependencies.supportMultiDex
 
     /* rx */
     implementation dependencies.rxJava
@@ -98,7 +89,6 @@ dependencies {
     implementation dependencies.squareRxAdapter
     implementation dependencies.viewGlide
 
-    implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.airbnb.android:lottie:2.2.5'
 
     /* tests */
