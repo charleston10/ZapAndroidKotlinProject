@@ -1,6 +1,6 @@
 package charleston.androidkotlinproject.di.modules
 
-import charleston.androidkotlinproject.features.proprierties.apresentations.PropertyActivity
+import charleston.androidkotlinproject.features.properties.presentations.PropertyActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

@@ -5,11 +5,10 @@ import charleston.androidkotlinproject.App
 import charleston.androidkotlinproject.di.modules.ActivityModule
 import charleston.androidkotlinproject.di.modules.ApiModule
 import charleston.androidkotlinproject.di.modules.AppModule
-import charleston.androidkotlinproject.features.proprierties.presenters.PropertyPresenter
+import charleston.androidkotlinproject.features.properties.presenters.PropertyPresenter
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
-import junit.framework.Test
 import javax.inject.Singleton
 
 /**

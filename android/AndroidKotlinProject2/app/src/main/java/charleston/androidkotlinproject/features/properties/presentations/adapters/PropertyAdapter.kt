@@ -1,4 +1,4 @@
-package charleston.androidkotlinproject.features.proprierties.apresentations.adapters
+package charleston.androidkotlinproject.features.properties.presentations.adapters
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView

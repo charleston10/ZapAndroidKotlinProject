@@ -1,4 +1,4 @@
-package charleston.androidkotlinproject.features.proprierties.presenters
+package charleston.androidkotlinproject.features.properties.presenters
 
 import charleston.androidkotlinproject.data.remote.features.property.PropertyManager
 import charleston.androidkotlinproject.di.AppInjector

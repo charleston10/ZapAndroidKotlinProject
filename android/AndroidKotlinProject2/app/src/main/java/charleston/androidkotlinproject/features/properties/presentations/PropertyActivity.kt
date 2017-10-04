@@ -1,4 +1,4 @@
-package charleston.androidkotlinproject.features.proprierties.apresentations
+package charleston.androidkotlinproject.features.properties.presentations
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -6,9 +6,9 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import charleston.androidkotlinproject.R
 import charleston.androidkotlinproject.data.domain.Property
-import charleston.androidkotlinproject.features.proprierties.apresentations.adapters.PropertyAdapter
-import charleston.androidkotlinproject.features.proprierties.presenters.PropertyPresenter
-import charleston.androidkotlinproject.features.proprierties.presenters.PropertyView
+import charleston.androidkotlinproject.features.properties.presentations.adapters.PropertyAdapter
+import charleston.androidkotlinproject.features.properties.presenters.PropertyPresenter
+import charleston.androidkotlinproject.features.properties.presenters.PropertyView
 
 /**
  * Created by charleston.anjos on 03/10/17.
