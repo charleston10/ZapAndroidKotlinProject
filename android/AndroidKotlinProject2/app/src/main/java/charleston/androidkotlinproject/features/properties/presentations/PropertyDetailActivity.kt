@@ -4,18 +4,18 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.widget.*
 import charleston.androidkotlinproject.R
 import charleston.androidkotlinproject.data.domain.Property
 import charleston.androidkotlinproject.data.domain.PropertyDetail
 import charleston.androidkotlinproject.extensions.*
+import charleston.androidkotlinproject.features.properties.presentations.adapters.CoverAdapter
 import charleston.androidkotlinproject.features.properties.presenters.PropertyPresenter
 import charleston.androidkotlinproject.features.properties.presenters.PropertyView
 import com.airbnb.lottie.LottieAnimationView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import android.widget.ArrayAdapter
 
 
 /**
@@ -25,7 +25,6 @@ class PropertyDetailActivity : AppCompatActivity(), PropertyView {
 
     private val toolbar: Toolbar by lazy { findViewById<Toolbar>(R.id.toolbar) }
 
-    private val imgCover: ImageView by lazy { findViewById<ImageView>(R.id.property_detail_cover) }
     private val tvAddressCity: TextView by lazy { findViewById<TextView>(R.id.property_detail_address_city) }
     private val tvAddressNeighborood: TextView by lazy { findViewById<TextView>(R.id.property_detail_address_neighborhood) }
     private val tvAddressZone: TextView by lazy { findViewById<TextView>(R.id.property_detail_address_zone) }
@@ -39,6 +38,8 @@ class PropertyDetailActivity : AppCompatActivity(), PropertyView {
     private val tvDescription: TextView by lazy { findViewById<TextView>(R.id.property_detail_description) }
     private val listCharacteristics: ListView by lazy { findViewById<ListView>(R.id.property_detail_list_characteristics) }
     private val listCharacteristicsFeatures: ListView by lazy { findViewById<ListView>(R.id.property_detail_list_characteristics_features) }
+
+    private val cover: RecyclerView by lazy { findViewById<RecyclerView>(R.id.cover) }
 
     private val contentView: LinearLayout by lazy { findViewById<LinearLayout>(R.id.content) }
     private val loadingView: LottieAnimationView by lazy { findViewById<LottieAnimationView>(R.id.loading) }
@@ -69,11 +70,6 @@ class PropertyDetailActivity : AppCompatActivity(), PropertyView {
     }
 
     override fun showDetail(property: PropertyDetail) {
-        Glide.with(this)
-                .load(property.imageUrl)
-                .apply(RequestOptions().placeholder(R.drawable.no_image).error(R.drawable.no_image))
-                .into(imgCover)
-
         tvType.text = property.type
 
         tvDescription.text = property.description
@@ -91,6 +87,10 @@ class PropertyDetailActivity : AppCompatActivity(), PropertyView {
 
         listCharacteristics.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, property.characteristics)
         listCharacteristicsFeatures.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, property.characteristicsFeatures)
+
+        cover.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        cover.setHasFixedSize(true)
+        cover.adapter = CoverAdapter(this, property.images)
     }
 
     override fun showList(properties: List<Property>) {
