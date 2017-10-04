@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light"
     android:fitsSystemWindows="true"
     tools:background="@color/black">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:fitsSystemWindows="true">
 
@@ -20,14 +19,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:layout_scrollFlags="scroll|enterAlways"
             app:title=" ">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar_main"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/colorPrimary"
+                android:background="@color/white"
                 android:contentInsetEnd="0dp"
                 android:contentInsetLeft="0dp"
                 android:contentInsetRight="0dp"
@@ -46,32 +45,14 @@
                     android:layout_gravity="center"
                     android:gravity="center_horizontal"
                     android:text="MyHouse"
-                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_collapseMode="parallax"
                     tools:text="Toolbar titulo"
                     tools:textColor="@color/white" />
 
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
-
-    <LinearLayout
-        android:id="@+id/main_detail_ctn_top"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="84dp"
-        android:fitsSystemWindows="true"
-        android:orientation="vertical"
-        app:layout_anchor="@id/toolbar_layout"
-        app:layout_collapseMode="parallax">
-
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="110dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="22dp"
-            android:src="@drawable/ic_house" />
-
-    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/main_list"
@@ -80,7 +61,6 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="4dp"
-        android:background="@color/white"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:background="@color/purple" />
 </android.support.design.widget.CoordinatorLayout>

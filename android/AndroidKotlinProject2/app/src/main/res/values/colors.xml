@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- application -->
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#448AFF</color>
+    <color name="colorPrimary">#607D8B</color>
+    <color name="colorPrimaryDark">#455A64</color>
+    <color name="colorAccent">#CFD8DC</color>
     <color name="colorTextIcons">#FFFFFF</color>
     <color name="colorLightPrimary">#C5CAE9</color>
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#757575</color>
     <color name="colorDivider">#BDBDBD</color>
     <color name="colorTextGrayBlue">#607d8b</color>
+    <color name="background">#eff0f1</color>
 
     <!-- colors primaries -->
     <color name="aqua">#00FFFF</color>
