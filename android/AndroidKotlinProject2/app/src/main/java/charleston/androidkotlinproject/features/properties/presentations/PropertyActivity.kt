@@ -28,11 +28,11 @@ class PropertyActivity : AppCompatActivity(), PropertyView, PropertyAdapter.Prop
         presenter.findAll()
     }
 
-    override fun showList(list: List<Property>) {
-        recyclerView.adapter = PropertyAdapter(this, list, this)
+    override fun showList(properties: List<Property>) {
+        recyclerView.adapter = PropertyAdapter(this, properties, this)
     }
 
-    override fun showDetail(detail: Property) {
+    override fun showDetail(property: Property) {
         //not implemented
     }
 

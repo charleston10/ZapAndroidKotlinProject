@@ -5,13 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.widget.Toast
+import android.widget.ImageView
 import charleston.androidkotlinproject.R
 import charleston.androidkotlinproject.data.domain.Property
 import charleston.androidkotlinproject.extensions.create
-import charleston.androidkotlinproject.extensions.moneyFormat
 import charleston.androidkotlinproject.features.properties.presenters.PropertyPresenter
 import charleston.androidkotlinproject.features.properties.presenters.PropertyView
+import com.bumptech.glide.Glide
 
 /**
  * Created by charleston.anjos on 04/10/17.
@@ -19,6 +19,7 @@ import charleston.androidkotlinproject.features.properties.presenters.PropertyVi
 class PropertyDetailActivity : AppCompatActivity(), PropertyView {
 
     private val toolbar: Toolbar by lazy { findViewById<Toolbar>(R.id.toolbar) }
+    private val imgCover: ImageView by lazy { findViewById<ImageView>(R.id.property_detail_cover) }
 
     private val presenter: PropertyPresenter by lazy { PropertyPresenter(this) }
 
@@ -45,11 +46,11 @@ class PropertyDetailActivity : AppCompatActivity(), PropertyView {
         }
     }
 
-    override fun showDetail(detail: Property) {
-        Toast.makeText(this, "Find by Id " + detail.price.moneyFormat, Toast.LENGTH_SHORT).show()
+    override fun showDetail(property: Property) {
+        Glide.with(this).load(property.imageUrl).into(imgCover)
     }
 
-    override fun showList(list: List<Property>) {
+    override fun showList(properties: List<Property>) {
         //not implemented
     }
 }
