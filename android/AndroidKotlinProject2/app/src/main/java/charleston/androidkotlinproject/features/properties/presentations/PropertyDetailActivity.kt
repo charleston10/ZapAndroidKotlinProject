@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.widget.ImageView
+import android.widget.Toast
 import charleston.androidkotlinproject.R
 import charleston.androidkotlinproject.data.domain.Property
 import charleston.androidkotlinproject.extensions.create
@@ -52,5 +53,9 @@ class PropertyDetailActivity : AppCompatActivity(), PropertyView {
 
     override fun showList(properties: List<Property>) {
         //not implemented
+    }
+
+    override fun showMessage(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 }

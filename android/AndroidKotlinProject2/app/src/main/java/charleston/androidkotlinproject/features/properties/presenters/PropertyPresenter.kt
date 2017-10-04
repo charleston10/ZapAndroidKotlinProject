@@ -1,5 +1,7 @@
 package charleston.androidkotlinproject.features.properties.presenters
 
+import android.content.Context
+import charleston.androidkotlinproject.R
 import charleston.androidkotlinproject.data.remote.features.property.PropertyManager
 import charleston.androidkotlinproject.di.AppInjector
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -14,6 +16,9 @@ class PropertyPresenter(private val view: PropertyView) {
     @Inject
     lateinit var manager: PropertyManager
 
+    @Inject
+    lateinit var context: Context
+
     init {
         AppInjector.dagger.inject(this)
     }
@@ -23,9 +28,11 @@ class PropertyPresenter(private val view: PropertyView) {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .unsubscribeOn(Schedulers.io())
-                .subscribe {
+                .subscribe({
                     view.showList(it.properties)
-                }
+                }, {
+                    view.showMessage(context.getString(R.string.message_error))
+                })
     }
 
     fun findById(id: Long) {
@@ -33,8 +40,10 @@ class PropertyPresenter(private val view: PropertyView) {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .unsubscribeOn(Schedulers.io())
-                .subscribe {
+                .subscribe({
                     view.showDetail(it.property)
-                }
+                }, {
+                    view.showMessage(context.getString(R.string.message_error))
+                })
     }
 }

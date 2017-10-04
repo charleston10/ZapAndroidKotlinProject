@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.widget.Toast
 import charleston.androidkotlinproject.R
 import charleston.androidkotlinproject.data.domain.Property
 import charleston.androidkotlinproject.features.properties.presentations.adapters.PropertyAdapter
@@ -34,6 +35,10 @@ class PropertyActivity : AppCompatActivity(), PropertyView, PropertyAdapter.Prop
 
     override fun showDetail(property: Property) {
         //not implemented
+    }
+
+    override fun showMessage(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
     override fun onClick(property: Property) {
