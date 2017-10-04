@@ -51,7 +51,7 @@ class PropertyTest {
         }
     }
 
-    fun list(): String {
+    private fun list(): String {
         return "{\n" +
                 "  \"Imoveis\": [\n" +
                 "    {\n" +
