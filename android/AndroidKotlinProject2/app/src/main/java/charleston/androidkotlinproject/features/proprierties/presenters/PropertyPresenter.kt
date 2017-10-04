@@ -1,6 +1,6 @@
 package charleston.androidkotlinproject.features.proprierties.presenters
 
-import charleston.androidkotlinproject.data.remote.features.propriertie.PropriertieManager
+import charleston.androidkotlinproject.data.remote.features.property.PropertyManager
 import charleston.androidkotlinproject.di.AppInjector
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -9,10 +9,10 @@ import javax.inject.Inject
 /**
  * Created by charleston.anjos on 03/10/17.
  */
-class PropriertiePresenter(private val view: PropriertieView) {
+class PropertyPresenter(private val view: PropertyView) {
 
     @Inject
-    lateinit var manager: PropriertieManager
+    lateinit var manager: PropertyManager
 
     init {
         AppInjector.dagger.inject(this)

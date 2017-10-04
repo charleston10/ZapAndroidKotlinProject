@@ -1,7 +1,7 @@
 package charleston.androidkotlinproject.di.modules
 
 import charleston.androidkotlinproject.data.remote.configurations.DateAdapter
-import charleston.androidkotlinproject.data.remote.features.propriertie.PropriertieManager
+import charleston.androidkotlinproject.data.remote.features.property.PropertyManager
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -49,7 +49,7 @@ class ApiModule {
 
     @Provides
     @Singleton
-    fun providePropriertManager(retrofit: Retrofit): PropriertieManager {
-        return PropriertieManager(retrofit)
+    fun providePropriertManager(retrofit: Retrofit): PropertyManager {
+        return PropertyManager(retrofit)
     }
 }
