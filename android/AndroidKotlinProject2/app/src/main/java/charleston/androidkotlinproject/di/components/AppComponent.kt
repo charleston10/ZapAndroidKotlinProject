@@ -9,6 +9,7 @@ import charleston.androidkotlinproject.features.proprierties.presenters.Property
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
+import junit.framework.Test
 import javax.inject.Singleton
 
 /**
@@ -19,7 +20,7 @@ import javax.inject.Singleton
 interface AppComponent {
 
     fun inject(application: App)
-    fun inject(propriertiePresenter: PropertyPresenter)
+    fun inject(propertyPresenter: PropertyPresenter)
 
     @Component.Builder
     interface Builder {

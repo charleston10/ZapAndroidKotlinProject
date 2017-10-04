@@ -9,7 +9,7 @@ import retrofit2.Retrofit
  * Created by charleston.anjos on 03/10/17.
  */
 
-class PropertyManager(val retrofit: Retrofit) {
+class PropertyManager(private val retrofit: Retrofit) {
 
     fun findAll(): Observable<PropertyResponse> {
         return retrofit.create(PropertyWorker::class.java).findAll()

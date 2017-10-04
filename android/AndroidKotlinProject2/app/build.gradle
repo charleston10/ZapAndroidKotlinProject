@@ -77,7 +77,6 @@ dependencies {
     implementation dependencies.rxAndroid
 
     /* dagger */
-    kaptTest dependencies.daggerCompiler
     kapt dependencies.daggerCompiler
     kapt dependencies.daggerAndroidProcessor
     implementation dependencies.dagger
@@ -98,16 +97,22 @@ dependencies {
     implementation dependencies.viewGlide
 
     /* tests */
+    kaptTest dependencies.daggerCompiler
+    kaptTest dependencies.daggerCompiler
+    kaptTest dependencies.daggerAndroidProcessor
+
     testImplementation dependencies.dagger
-    testImplementation dependencies.testRobolectric
-    testImplementation dependencies.testRobolectricAnnotations
-    testImplementation dependencies.testRobolectricSupport
+    testImplementation dependencies.daggerAndroid
+    testImplementation dependencies.daggerAndroidSupport
+
     implementation dependencies.testEspressoCore
     implementation dependencies.testEspressoIntents
     implementation dependencies.testRules
     implementation dependencies.testRunner
     testImplementation dependencies.testJUnit
     testImplementation dependencies.testMockitoKoltin
+    implementation dependencies.testMockitoWebServer
+    implementation dependencies.testKotlin
 
     /* logs */
     compile dependencies.logTimber

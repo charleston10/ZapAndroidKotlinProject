@@ -12,6 +12,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 import java.util.concurrent.TimeUnit
+import javax.inject.Named
 import javax.inject.Singleton
 
 /**
@@ -49,7 +50,26 @@ class ApiModule {
 
     @Provides
     @Singleton
-    fun providePropriertManager(retrofit: Retrofit): PropertyManager {
+    fun providePropertyManager(retrofit: Retrofit): PropertyManager {
+        return PropertyManager(retrofit)
+    }
+
+    @Provides
+    @Singleton
+    @Named("test")
+    fun provideRetrofitTest(gsonFactory: Gson, httpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+                .baseUrl("")
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gsonFactory))
+                .client(httpClient)
+                .build()
+    }
+
+    @Provides
+    @Singleton
+    @Named("test")
+    fun providePropertyManagerTest(@Named("test") retrofit: Retrofit): PropertyManager {
         return PropertyManager(retrofit)
     }
 }
