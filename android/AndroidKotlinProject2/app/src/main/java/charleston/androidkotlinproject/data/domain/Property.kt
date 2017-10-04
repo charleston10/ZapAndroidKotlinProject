@@ -9,7 +9,7 @@ import java.util.*
  */
 
 data class Property(
-        @SerializedName("CodImovel") var id: Int,
+        @SerializedName("CodImovel") var id: Long,
         @SerializedName("TipoImovel") var type: String,
         @SerializedName("Endereco") var address: Address,
         @SerializedName("PrecoVenda") var price: Double,

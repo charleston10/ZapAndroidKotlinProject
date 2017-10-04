@@ -13,7 +13,7 @@ import charleston.androidkotlinproject.features.properties.presenters.PropertyVi
 /**
  * Created by charleston.anjos on 03/10/17.
  */
-class PropertyActivity : AppCompatActivity(), PropertyView {
+class PropertyActivity : AppCompatActivity(), PropertyView, PropertyAdapter.PropertyListener {
 
     private val recyclerView: RecyclerView by lazy { findViewById<RecyclerView>(R.id.main_list) }
 
@@ -29,6 +29,14 @@ class PropertyActivity : AppCompatActivity(), PropertyView {
     }
 
     override fun showList(list: List<Property>) {
-        recyclerView.adapter = PropertyAdapter(this, list)
+        recyclerView.adapter = PropertyAdapter(this, list, this)
+    }
+
+    override fun showDetail(detail: Property) {
+        //not implemented
+    }
+
+    override fun onClick(property: Property) {
+        startActivity(PropertyDetailActivity.getIntent(this, property.id))
     }
 }

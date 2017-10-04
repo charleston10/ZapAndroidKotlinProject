@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide
 /**
  * Created by charleston.anjos on 04/10/17.
  */
-class PropertyAdapter(private val context: Context, private val list: List<Any>) : RecyclerView.Adapter<PropertyAdapter.ListViewHolder>() {
+class PropertyAdapter(private val context: Context, private val list: List<Any>, private val propertyListener: PropertyListener? = null) : RecyclerView.Adapter<PropertyAdapter.ListViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ListViewHolder? {
         val view = LayoutInflater.from(context).inflate(R.layout.item_property, viewGroup, false)
@@ -26,13 +26,18 @@ class PropertyAdapter(private val context: Context, private val list: List<Any>)
         val property = list[position] as Property
         val viewHolder = holder as ListViewHolder
 
-        viewHolder.tvType.text = property.type
-        viewHolder.tvAddress.text = property.address.neighborhood
-        viewHolder.tvPrice.text = property.price.moneyFormat
+        viewHolder.run {
+            tvType.text = property.type
+            tvAddress.text = property.address.neighborhood
+            tvPrice.text = property.price.moneyFormat
+            Glide.with(context).load(property.imageUrl).into(image)
+        }
 
-        Glide.with(context)
-                .load(property.imageUrl)
-                .into(viewHolder.image)
+        propertyListener?.let {
+            viewHolder.itemView.setOnClickListener({
+                propertyListener.onClick(property)
+            })
+        }
     }
 
     override fun getItemCount(): Int {
@@ -44,5 +49,9 @@ class PropertyAdapter(private val context: Context, private val list: List<Any>)
         val tvAddress: TextView = itemView.findViewById(R.id.item_property_address_neighborhood)
         val tvPrice: TextView = itemView.findViewById(R.id.item_property_price)
         val image: ImageView = itemView.findViewById(R.id.item_property_image)
+    }
+
+    interface PropertyListener {
+        fun onClick(property: Property)
     }
 }

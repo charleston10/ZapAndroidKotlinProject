@@ -34,8 +34,7 @@ class PropertyPresenter(private val view: PropertyView) {
                 .observeOn(AndroidSchedulers.mainThread())
                 .unsubscribeOn(Schedulers.io())
                 .subscribe {
-
+                    view.showDetail(it.property)
                 }
     }
-
 }

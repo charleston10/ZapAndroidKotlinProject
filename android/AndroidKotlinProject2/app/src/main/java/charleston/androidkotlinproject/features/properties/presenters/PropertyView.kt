@@ -7,4 +7,5 @@ import charleston.androidkotlinproject.data.domain.Property
  */
 interface PropertyView {
     fun showList(list: List<Property>)
+    fun showDetail(detail: Property)
 }
