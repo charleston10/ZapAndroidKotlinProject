@@ -1,6 +1,6 @@
 package charleston.androidkotlinproject.di.modules
 
-import charleston.androidkotlinproject.features.proprierties.apresentations.PropriertActivity
+import charleston.androidkotlinproject.features.proprierties.apresentations.PropertyActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -11,6 +11,6 @@ import dagger.android.ContributesAndroidInjector
 internal abstract class ActivityModule {
 
     @ContributesAndroidInjector(modules = arrayOf())
-    internal abstract fun contribuitePropriertActivity(): PropriertActivity
+    internal abstract fun contribuitePropriertActivity(): PropertyActivity
 
 }

@@ -1,7 +1,7 @@
 package charleston.androidkotlinproject.data.remote.features.propriertie
 
 import charleston.androidkotlinproject.data.domain.PropertieResponse
-import charleston.androidkotlinproject.data.domain.Propriertie
+import charleston.androidkotlinproject.data.domain.Property
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -15,5 +15,5 @@ interface PropriertieWorker {
     fun findAll(): Observable<PropertieResponse>
 
     @GET(PropriertieEndPoint.FIND_BY_ID)
-    fun findAById(@Path("id") id: Long): Observable<Propriertie>
+    fun findAById(@Path("id") id: Long): Observable<Property>
 }

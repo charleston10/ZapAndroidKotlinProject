@@ -2,16 +2,20 @@ package charleston.androidkotlinproject.features.proprierties.apresentations
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import charleston.androidkotlinproject.R
-import charleston.androidkotlinproject.data.domain.Propriertie
+import charleston.androidkotlinproject.data.domain.Property
+import charleston.androidkotlinproject.features.proprierties.apresentations.adapters.PropertyAdapter
 import charleston.androidkotlinproject.features.proprierties.presenters.PropriertiePresenter
 import charleston.androidkotlinproject.features.proprierties.presenters.PropriertieView
-import timber.log.Timber
 
 /**
  * Created by charleston.anjos on 03/10/17.
  */
-class PropriertActivity : AppCompatActivity(), PropriertieView {
+class PropertyActivity : AppCompatActivity(), PropriertieView {
+
+    private val recyclerView: RecyclerView by lazy { findViewById<RecyclerView>(R.id.main_list) }
 
     private val presenter: PropriertiePresenter by lazy { PropriertiePresenter(this) }
 
@@ -19,10 +23,12 @@ class PropriertActivity : AppCompatActivity(), PropriertieView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
         presenter.findAll()
     }
 
-    override fun showList(list: List<Propriertie>) {
-        Timber.i("listou")
+    override fun showList(list: List<Property>) {
+        recyclerView.adapter = PropertyAdapter(this, list)
     }
 }

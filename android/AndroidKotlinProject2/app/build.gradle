@@ -95,6 +95,7 @@ dependencies {
     implementation dependencies.squareLogging
     implementation dependencies.squareOkHttp
     implementation dependencies.squareRxAdapter
+    implementation dependencies.viewGlide
 
     /* tests */
     testImplementation dependencies.dagger
