@@ -28,6 +28,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/colorPrimary"
+                android:contentInsetEnd="0dp"
+                android:contentInsetLeft="0dp"
+                android:contentInsetRight="0dp"
+                android:contentInsetStart="0dp"
+                app:contentInsetEnd="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetRight="0dp"
+                app:contentInsetStart="0dp"
                 app:layout_collapseMode="pin"
                 tools:background="@color/yellow">
 
@@ -37,6 +45,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center_horizontal"
+                    android:text="MyHouse"
+                    android:textColor="@color/white"
                     tools:text="Toolbar titulo"
                     tools:textColor="@color/white" />
 
@@ -45,13 +55,21 @@
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
-        android:id="@+id/investment_detail_ctn_top"
+        android:id="@+id/main_detail_ctn_top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="84dp"
         android:fitsSystemWindows="true"
         android:orientation="vertical"
-        app:layout_anchor="@id/toolbar_layout">
+        app:layout_anchor="@id/toolbar_layout"
+        app:layout_collapseMode="parallax">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="22dp"
+            android:src="@drawable/ic_house" />
 
     </LinearLayout>
 
