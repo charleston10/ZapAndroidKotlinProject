@@ -3,5 +3,33 @@
 
     <string name="message_campo_obrigatorio">Mandatory field</string>
     <string name="title_detail">Mais detalhes</string>
-    <string name="message_error">Desculpe, problema ao carregar registro</string>
+    <string name="message_error">Desculpe, houve um problema ao carregar registro</string>
+
+    <string name="label_address_city">Cidade: %s</string>
+    <string name="label_address_neighborhood">Bairro: %s</string>
+
+    <string name="label_bedroom_zero">Sem quarto</string>
+    <string name="label_suit_zero">Sem suíte</string>
+    <string name="label_space_available_zero">Sem garagem</string>
+
+    <plurals name="label_bedroom">
+        <item quantity="one">%d quarto</item>
+        <item quantity="few">%d quartos</item>
+        <item quantity="many">%d quartos</item>
+        <item quantity="other">%d quartos</item>
+    </plurals>
+
+    <plurals name="label_suit">
+        <item quantity="one">%d suíte</item>
+        <item quantity="few">%d suítes</item>
+        <item quantity="many">%d suítes</item>
+        <item quantity="other">%d suítes</item>
+    </plurals>
+
+    <plurals name="label_space_available">
+        <item quantity="one">%d garagem</item>
+        <item quantity="few">%d garagens</item>
+        <item quantity="many">%d garagens</item>
+        <item quantity="other">%d garagens</item>
+    </plurals>
 </resources>

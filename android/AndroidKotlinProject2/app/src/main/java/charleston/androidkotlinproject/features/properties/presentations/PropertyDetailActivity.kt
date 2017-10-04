@@ -6,10 +6,13 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import charleston.androidkotlinproject.R
 import charleston.androidkotlinproject.data.domain.Property
 import charleston.androidkotlinproject.extensions.create
+import charleston.androidkotlinproject.extensions.moneyFormat
+import charleston.androidkotlinproject.extensions.plurals
 import charleston.androidkotlinproject.features.properties.presenters.PropertyPresenter
 import charleston.androidkotlinproject.features.properties.presenters.PropertyView
 import com.bumptech.glide.Glide
@@ -20,7 +23,17 @@ import com.bumptech.glide.Glide
 class PropertyDetailActivity : AppCompatActivity(), PropertyView {
 
     private val toolbar: Toolbar by lazy { findViewById<Toolbar>(R.id.toolbar) }
+
     private val imgCover: ImageView by lazy { findViewById<ImageView>(R.id.property_detail_cover) }
+    private val tvAddressCity: TextView by lazy { findViewById<TextView>(R.id.property_detail_address_city) }
+    private val tvAddressNeighborood: TextView by lazy { findViewById<TextView>(R.id.property_detail_address_neighborhood) }
+    private val tvAddressZone: TextView by lazy { findViewById<TextView>(R.id.property_detail_address_zone) }
+    private val tvPrice: TextView by lazy { findViewById<TextView>(R.id.property_detail_price) }
+    private val tvBedroom: TextView by lazy { findViewById<TextView>(R.id.property_detail_bedroom) }
+    private val tvSuits: TextView by lazy { findViewById<TextView>(R.id.property_detail_suits) }
+    private val tvSpaceAvaible: TextView by lazy { findViewById<TextView>(R.id.property_detail_space_available) }
+    private val tvClient: TextView by lazy { findViewById<TextView>(R.id.property_detail_client) }
+    private val tvType: TextView by lazy { findViewById<TextView>(R.id.property_detail_type    ) }
 
     private val presenter: PropertyPresenter by lazy { PropertyPresenter(this) }
 
@@ -49,6 +62,17 @@ class PropertyDetailActivity : AppCompatActivity(), PropertyView {
 
     override fun showDetail(property: Property) {
         Glide.with(this).load(property.imageUrl).into(imgCover)
+        tvType.text = property.type
+
+        tvAddressCity.text = String.format(getString(R.string.label_address_city), property.address.city)
+        tvAddressNeighborood.text = String.format(getString(R.string.label_address_neighborhood), property.address.neighborhood)
+        tvAddressZone.text = property.address.zone
+
+        tvPrice.text = property.price.moneyFormat
+        tvBedroom.text = plurals(property.bedroom, R.string.label_bedroom_zero, R.plurals.label_bedroom)
+        tvSuits.text = plurals(property.suit, R.string.label_suit_zero, R.plurals.label_suit)
+        tvSpaceAvaible.text = plurals(property.spaceAvailable, R.string.label_space_available_zero, R.plurals.label_space_available)
+        tvClient.text = property.client.name
     }
 
     override fun showList(properties: List<Property>) {
@@ -56,6 +80,6 @@ class PropertyDetailActivity : AppCompatActivity(), PropertyView {
     }
 
     override fun showMessage(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

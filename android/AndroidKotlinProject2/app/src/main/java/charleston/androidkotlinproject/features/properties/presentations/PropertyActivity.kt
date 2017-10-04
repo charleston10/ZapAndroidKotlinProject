@@ -38,7 +38,7 @@ class PropertyActivity : AppCompatActivity(), PropertyView, PropertyAdapter.Prop
     }
 
     override fun showMessage(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onClick(property: Property) {

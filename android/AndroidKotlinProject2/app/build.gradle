@@ -63,6 +63,8 @@ dependencies {
     /* kotlin support */
     implementation dependencies.androidKotlin
 
+    kapt 'com.github.bumptech.glide:compiler:4.2.0'
+
     /* support */
     implementation dependencies.supportAppCompact
     implementation dependencies.supportDesign
@@ -95,6 +97,8 @@ dependencies {
     implementation dependencies.squareOkHttp
     implementation dependencies.squareRxAdapter
     implementation dependencies.viewGlide
+
+
 
     /* tests */
     kaptTest dependencies.daggerCompiler

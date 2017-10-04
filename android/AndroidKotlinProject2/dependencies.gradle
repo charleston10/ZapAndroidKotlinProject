@@ -22,7 +22,7 @@ ext {
     robolectric = '3.4.2'
     robolectricAnnotations = '3.0'
     robolectricSupport = '3.0'
-    picasso = '4.2.0'
+    glide = '4.2.0'
 
     dependencies = [
             androidKotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin",
@@ -57,7 +57,7 @@ ext {
             squareRetrofit            : "com.squareup.retrofit2:retrofit:$retrofit",
             squareRxAdapter           : "com.squareup.retrofit2:adapter-rxjava2:$retrofit",
             squareConverterGson       : "com.squareup.retrofit2:converter-gson:$squareConverterGson",
-            viewGlide                 : "com.github.bumptech.glide:glide:$picasso",
+            viewGlide                 : "com.github.bumptech.glide:glide:$glide",
 
             logTimber                 : "com.jakewharton.timber:timber:$timber",
 

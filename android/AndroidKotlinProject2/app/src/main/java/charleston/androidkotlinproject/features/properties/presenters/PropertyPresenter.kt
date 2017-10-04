@@ -31,6 +31,7 @@ class PropertyPresenter(private val view: PropertyView) {
                 .subscribe({
                     view.showList(it.properties)
                 }, {
+                    it.printStackTrace()
                     view.showMessage(context.getString(R.string.message_error))
                 })
     }
@@ -43,6 +44,7 @@ class PropertyPresenter(private val view: PropertyView) {
                 .subscribe({
                     view.showDetail(it.property)
                 }, {
+                    it.printStackTrace()
                     view.showMessage(context.getString(R.string.message_error))
                 })
     }

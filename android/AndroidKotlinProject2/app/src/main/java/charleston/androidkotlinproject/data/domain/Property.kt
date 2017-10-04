@@ -15,7 +15,7 @@ data class Property(
         @SerializedName("PrecoVenda") var price: Double,
         @SerializedName("Dormitorios") var bedroom: Int,
         @SerializedName("Suites") var suit: Int,
-        @SerializedName("Vagas") var spaceAvaible: Int,
+        @SerializedName("Vagas") var spaceAvailable: Int,
         @SerializedName("AreaUtil") var totalArea: Double,
         @SerializedName("AreaTotal") var totalAreaUtil: Double,
         @SerializedName("DataAtualizacao") var dateUpdate: Date,
