@@ -7,6 +7,7 @@ import java.util.*
 /**
  * Created by charleston.anjos on 03/10/17.
  */
+
 data class Propriertie(
         @SerializedName("CodImovel") var id: Int,
         @SerializedName("TipoImovel") var type: String,

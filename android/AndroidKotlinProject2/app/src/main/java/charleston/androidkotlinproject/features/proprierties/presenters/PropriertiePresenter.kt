@@ -23,8 +23,19 @@ class PropriertiePresenter(private val view: PropriertieView) {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .unsubscribeOn(Schedulers.io())
-                .subscribe({
-                    view.showList(it)
-                })
+                .subscribe {
+                    view.showList(it.properties)
+                }
     }
+
+    fun findById(id: Long) {
+        manager.findById(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .unsubscribeOn(Schedulers.io())
+                .subscribe {
+
+                }
+    }
+
 }

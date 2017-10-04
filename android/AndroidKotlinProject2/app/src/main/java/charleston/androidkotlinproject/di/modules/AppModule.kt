@@ -25,10 +25,4 @@ class AppModule(internal val application: Application) {
     internal fun providerApplicationContext(): Context {
         return application.applicationContext
     }
-
-    @Provides
-    @Reusable
-    internal fun provideGson() : Gson {
-        return Gson()
-    }
 }

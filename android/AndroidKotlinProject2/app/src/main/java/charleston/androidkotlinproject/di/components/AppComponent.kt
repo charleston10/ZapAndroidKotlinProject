@@ -2,7 +2,6 @@ package charleston.androidkotlinproject.di.components
 
 import android.app.Application
 import charleston.androidkotlinproject.App
-import charleston.androidkotlinproject.data.remote.base.BaseManager
 import charleston.androidkotlinproject.di.modules.ActivityModule
 import charleston.androidkotlinproject.di.modules.ApiModule
 import charleston.androidkotlinproject.di.modules.AppModule

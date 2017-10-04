@@ -1,5 +1,6 @@
 package charleston.androidkotlinproject.di.modules
 
+import charleston.androidkotlinproject.data.remote.configurations.DateAdapter
 import charleston.androidkotlinproject.data.remote.features.propriertie.PropriertieManager
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -9,6 +10,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -21,7 +23,7 @@ class ApiModule {
     @Provides
     @Singleton
     fun provideGsonFactory(): Gson {
-        return GsonBuilder().setLenient().create()
+        return GsonBuilder().registerTypeAdapter(Date::class.java, DateAdapter()).setLenient().create()
     }
 
     @Provides
@@ -38,7 +40,7 @@ class ApiModule {
     @Singleton
     fun provideRetrofit(gsonFactory: Gson, httpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-                .baseUrl("http://demo4573903.mockable.io")
+                .baseUrl("http://demo4573903.mockable.io/")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gsonFactory))
                 .client(httpClient)
@@ -47,7 +49,7 @@ class ApiModule {
 
     @Provides
     @Singleton
-    fun providePropriertManager(): PropriertieManager {
-        return PropriertieManager()
+    fun providePropriertManager(retrofit: Retrofit): PropriertieManager {
+        return PropriertieManager(retrofit)
     }
 }

@@ -21,6 +21,6 @@ class PropriertActivity : AppCompatActivity(), PropriertieView {
     }
 
     override fun showList(list: List<Propriertie>) {
-        Timber.i("listou", list)
+        Timber.i("listou")
     }
 }
