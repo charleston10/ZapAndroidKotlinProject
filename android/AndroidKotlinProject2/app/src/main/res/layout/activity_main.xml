@@ -54,7 +54,17 @@
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="glow_loading.json"
+        app:lottie_loop="true" />
+
     <android.support.v7.widget.RecyclerView
+        android:visibility="gone"
         android:id="@+id/main_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

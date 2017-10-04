@@ -24,28 +24,35 @@ class PropertyPresenter(private val view: PropertyView) {
     }
 
     fun findAll() {
+        view.showLoading(true, false)
         manager.findAll()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .unsubscribeOn(Schedulers.io())
                 .subscribe({
+                    view.showLoading(false, false)
                     view.showList(it.properties)
                 }, {
+                    view.showLoading(false, true)
                     it.printStackTrace()
-                    view.showMessage(context.getString(R.string.message_error))
+                    view.showError(context.getString(R.string.message_error))
                 })
     }
 
     fun findById(id: Long) {
+        view.showLoading(true, false)
+
         manager.findById(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .unsubscribeOn(Schedulers.io())
                 .subscribe({
+                    view.showLoading(false, false)
                     view.showDetail(it.property)
                 }, {
                     it.printStackTrace()
-                    view.showMessage(context.getString(R.string.message_error))
+                    view.showError(context.getString(R.string.message_error))
+                    view.showLoading(false, true)
                 })
     }
 }

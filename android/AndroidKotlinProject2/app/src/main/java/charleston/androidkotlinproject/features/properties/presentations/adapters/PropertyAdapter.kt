@@ -11,6 +11,8 @@ import charleston.androidkotlinproject.R
 import charleston.androidkotlinproject.data.domain.Property
 import charleston.androidkotlinproject.extensions.moneyFormat
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+
 
 /**
  * Created by charleston.anjos on 04/10/17.
@@ -30,8 +32,12 @@ class PropertyAdapter(private val context: Context, private val list: List<Any>,
             tvType.text = property.type
             tvAddress.text = property.address.neighborhood
             tvPrice.text = property.price.moneyFormat
-            Glide.with(context).load(property.imageUrl).into(image)
         }
+
+        Glide.with(context)
+                .load(property.imageUrl)
+                .apply(RequestOptions().placeholder(R.drawable.no_image).error(R.drawable.no_image))
+                .into(viewHolder.image)
 
         propertyListener?.let {
             viewHolder.itemView.setOnClickListener({

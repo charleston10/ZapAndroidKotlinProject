@@ -98,7 +98,8 @@ dependencies {
     implementation dependencies.squareRxAdapter
     implementation dependencies.viewGlide
 
-
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.airbnb.android:lottie:2.2.5'
 
     /* tests */
     kaptTest dependencies.daggerCompiler

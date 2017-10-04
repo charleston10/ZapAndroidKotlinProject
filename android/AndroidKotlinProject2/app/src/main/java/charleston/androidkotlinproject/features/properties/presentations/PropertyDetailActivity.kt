@@ -6,16 +6,17 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import charleston.androidkotlinproject.R
 import charleston.androidkotlinproject.data.domain.Property
-import charleston.androidkotlinproject.extensions.create
-import charleston.androidkotlinproject.extensions.moneyFormat
-import charleston.androidkotlinproject.extensions.plurals
+import charleston.androidkotlinproject.extensions.*
 import charleston.androidkotlinproject.features.properties.presenters.PropertyPresenter
 import charleston.androidkotlinproject.features.properties.presenters.PropertyView
+import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 
 /**
  * Created by charleston.anjos on 04/10/17.
@@ -33,7 +34,10 @@ class PropertyDetailActivity : AppCompatActivity(), PropertyView {
     private val tvSuits: TextView by lazy { findViewById<TextView>(R.id.property_detail_suits) }
     private val tvSpaceAvaible: TextView by lazy { findViewById<TextView>(R.id.property_detail_space_available) }
     private val tvClient: TextView by lazy { findViewById<TextView>(R.id.property_detail_client) }
-    private val tvType: TextView by lazy { findViewById<TextView>(R.id.property_detail_type    ) }
+    private val tvType: TextView by lazy { findViewById<TextView>(R.id.property_detail_type) }
+
+    private val contentView: LinearLayout by lazy { findViewById<LinearLayout>(R.id.content) }
+    private val loadingView: LottieAnimationView by lazy { findViewById<LottieAnimationView>(R.id.loading) }
 
     private val presenter: PropertyPresenter by lazy { PropertyPresenter(this) }
 
@@ -61,7 +65,11 @@ class PropertyDetailActivity : AppCompatActivity(), PropertyView {
     }
 
     override fun showDetail(property: Property) {
-        Glide.with(this).load(property.imageUrl).into(imgCover)
+        Glide.with(this)
+                .load(property.imageUrl)
+                .apply(RequestOptions().placeholder(R.drawable.no_image).error(R.drawable.no_image))
+                .into(imgCover)
+
         tvType.text = property.type
 
         tvAddressCity.text = String.format(getString(R.string.label_address_city), property.address.city)
@@ -79,7 +87,26 @@ class PropertyDetailActivity : AppCompatActivity(), PropertyView {
         //not implemented
     }
 
-    override fun showMessage(message: String) {
+    override fun showError(message: String) {
+        contentView.hide()
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
+
+    override fun showLoading(show: Boolean, hasError: Boolean) {
+        when {
+            show -> {
+                contentView.hide()
+                loadingView.show()
+            }
+            hasError -> {
+                loadingView.hide()
+                contentView.hide()
+            }
+            else -> {
+                loadingView.hide()
+                contentView.show()
+            }
+        }
+    }
+
 }
