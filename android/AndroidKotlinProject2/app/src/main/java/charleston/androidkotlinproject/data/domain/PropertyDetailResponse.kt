@@ -7,5 +7,5 @@ import java.io.Serializable
  * Created by charleston on 03/10/17.
  */
 data class PropertyDetailResponse(
-        @SerializedName("Imovel") var property: Property
+        @SerializedName("Imovel") var property: PropertyDetail
 ) : Serializable

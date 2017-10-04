@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.widget.Toast
 import charleston.androidkotlinproject.R
 import charleston.androidkotlinproject.data.domain.Property
+import charleston.androidkotlinproject.data.domain.PropertyDetail
 import charleston.androidkotlinproject.extensions.hide
 import charleston.androidkotlinproject.extensions.show
 import charleston.androidkotlinproject.features.properties.presentations.adapters.PropertyAdapter
@@ -37,7 +38,7 @@ class PropertyActivity : AppCompatActivity(), PropertyView, PropertyAdapter.Prop
         recyclerView.adapter = PropertyAdapter(this, properties, this)
     }
 
-    override fun showDetail(property: Property) {
+    override fun showDetail(property: PropertyDetail) {
         //not implemented
     }
 

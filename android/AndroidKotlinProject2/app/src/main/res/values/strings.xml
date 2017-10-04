@@ -7,6 +7,8 @@
 
     <string name="label_address_city">Cidade: %s</string>
     <string name="label_address_neighborhood">Bairro: %s</string>
+    <string name="label_price">Preço: %s</string>
+    <string name="label_price_condominium">Condomínio: %s</string>
 
     <string name="label_bedroom_zero">Sem quarto</string>
     <string name="label_suit_zero">Sem suíte</string>
